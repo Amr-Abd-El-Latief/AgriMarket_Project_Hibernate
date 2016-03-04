@@ -31,7 +31,7 @@ public class JdbcConnection {
             try {
                 
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                if (connection != null) {
+                if (connection == null) {
                    connection = DriverManager.getConnection(url, user, pass);	   
                 }
                  
