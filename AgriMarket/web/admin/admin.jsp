@@ -44,7 +44,7 @@
     </div>
 </section>
 
-<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background mbr-after-navbar" id="header1-40" style="background-image: url(assets/images/istock-000016896298xlarge-4200x2833-32.jpg);">
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background mbr-after-navbar" id="header1-40" style="background-image: url(../assets/images/istock-000016896298xlarge-4200x2833-32.jpg);">
     <div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-box__magnet--center-left">
         <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(34, 34, 34);"></div>
         <div class="mbr-box__container mbr-section__container container">
