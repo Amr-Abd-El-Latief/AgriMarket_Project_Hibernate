@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="assets/images/untitled-382x276-65.png" type="image/x-icon">
         <meta name="description" content="">
-        <title>Profile</title>
+        <title>Edit Profile</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/mobirise/css/style.css">
@@ -34,7 +34,7 @@
                         <div class="mbr-navbar__column mbr-navbar__menu">
                             <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
                                 <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="index.jsp">HOME</a></li> <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="about.jsp">ABOUT</a></li> <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="contact_us.jsp">CONTACT</a></li></ul></div>
-                                <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="profile.jsp">Awad Hussein</a></li></ul></div>
+                                <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="profile.jsp">Save</a></li></ul></div>
                             </nav>
                         </div>
                     </div>
@@ -50,16 +50,17 @@
 
                         <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom ">
                             <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg">
-                                <h3 class="mbr-figure__caption">Awad Hussien</h3>
+                            <h3 class="mbr-figure__caption">Awad Hussien</h3>
                         </figure>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                                <div class="mbr-buttons mbr-buttons--center">
-                                    <button  href = "" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
+<!--                        <div class="mbr-section__container mbr-section__container--middle">
+                            <div class="mbr-buttons mbr-buttons--center">
+                                <button  href = "" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
 
-                                </div>
                             </div>
+                        </div>-->
                     </div>
                     <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
+                        
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
                                 <h3 class="mbr-header__text">Awad Hussien</h3>

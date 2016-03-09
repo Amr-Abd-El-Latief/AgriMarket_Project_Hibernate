@@ -15,7 +15,9 @@ import model.pojo.User;
 public interface UserDao {
     
    public List<User> getAllUsers();
+   //We need password
    public User signIn(String email);
    public void updateUser(User user);
    public boolean signUp(User user);
+   //We need get user
 }
