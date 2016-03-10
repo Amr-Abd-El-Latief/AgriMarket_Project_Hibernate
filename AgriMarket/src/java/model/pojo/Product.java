@@ -68,6 +68,9 @@ public class Product {
         this.quantity = quantity;
     }
     
-    
+         public boolean valid()
+    {
+        return name.length()!=0 ;
+    }
     
 }
