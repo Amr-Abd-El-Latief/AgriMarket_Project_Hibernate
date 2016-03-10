@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
     <head>
         <!-- Site made with Mobirise Website Builder v2.9, https://mobirise.com -->
@@ -14,7 +17,7 @@
         <link rel="stylesheet" href="assets/mobirise/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
-
+        <%--<jsp:useBean id="user" scope="session" class="model.pojo.User"/>--%>
 
     </head>
     <body>
@@ -50,55 +53,59 @@
 
                         <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom ">
                             <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg">
-                            <h3 class="mbr-figure__caption">Awad Hussien</h3>
+                            <!--<h3 class="mbr-figure__caption">Awad Hussien</h3>-->
                         </figure>
-<!--                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-buttons mbr-buttons--center">
-                                <button  href = "" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
-
-                            </div>
-                        </div>-->
-                    </div>
-                    <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
+                        <!--                        <div class="mbr-section__container mbr-section__container--middle">
+                                                    <div class="mbr-buttons mbr-buttons--center">
+                                                        <button  href = "" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
                         
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">Awad Hussien</h3>
-
-                            </div>
-                        </div>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>Farmer</strong></h2>    
-                            </div>
-                        </div>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>40 years old</strong></h2>    
-                            </div>
-                        </div>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>awad@yahoo.com</strong></h2>    
-                            </div>
-                        </div>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>01297397483653</strong></h2>    
-                            </div>
-                        </div>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>32 giza sq, Egypt</strong></h2>    
-                            </div>
-                        </div>
-                        <div class="mbr-section__container mbr-section__container--middle">
-                            <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
-                                <h2><strong>Interested in: tomatoes</strong></h2>    
-                            </div>
-                        </div>
+                                                    </div>
+                                                </div>-->
                     </div>
 
+                    <form action="index.html" method="post"  name="signUpForm">
+                        <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
+
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                                    <!--<h3 class="mbr-header__text">${sessionScope.user.name}</h3>-->
+                                    <input type="text" class="form-control" name="first-name" required="" value = '${sessionScope.user.name}' placeholder="First Name*">
+
+                                </div>
+                            </div>
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
+                                    <h2><strong>Farmer</strong></h2>    
+                                </div>
+                            </div>
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
+                                    <h2><strong>40 years old</strong></h2>    
+                                </div>
+                            </div>
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
+                                    <h2><strong>awad@yahoo.com</strong></h2>    
+                                </div>
+                            </div>
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
+                                    <h2><strong>5401297397483653</strong></h2>    
+                                </div>
+                            </div>
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
+                                    <h2><strong>32 giza sq, Egypt</strong></h2>    
+                                </div>
+                            </div>
+                            <div class="mbr-section__container mbr-section__container--middle">
+                                <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg">
+                                    <h2><strong>Interested in: tomatoes</strong></h2>    
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>

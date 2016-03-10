@@ -54,7 +54,7 @@
                         </figure>
                         <div class="mbr-section__container mbr-section__container--middle">
                                 <div class="mbr-buttons mbr-buttons--center">
-                                    <button  href = "" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
+                                    <button  href = "edit_profile.jsp" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
 
                                 </div>
                             </div>

@@ -18,7 +18,6 @@ public interface ProductDao {
     
  
    public List<Product> getAllProducts();
-   //Not unique
    public Product getProduct(String name);
    public boolean addProduct(Product product);
    public void updateProduct(Product product);
