@@ -50,14 +50,19 @@
 
                         <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom ">
                             <img class="mbr-figure__img"  src="assets/images/617f67a372f0dfb8ee62533c431758ee.jpg">
-                                <h3 class="mbr-figure__caption">Awad Hussien</h3>
+                            <h3 class="mbr-figure__caption">Awad Hussien</h3>
                         </figure>
                         <div class="mbr-section__container mbr-section__container--middle">
-                                <div class="mbr-buttons mbr-buttons--center">
-                                    <button  href = "edit_profile.jsp" class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
+                            <div class="mbr-buttons mbr-buttons--center">
+                                <script>
+                                    function edit_profile() {
+                                        location.href = 'edit_profile.jsp';
+                                    }
+                                </script>
+                                <button  onclick='edit_profile()' class="mbr-buttons__btn btn btn-lg btn-link">Edit profile</button>
 
-                                </div>
                             </div>
+                        </div>
                     </div>
                     <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
                         <div class="mbr-section__container mbr-section__container--middle">

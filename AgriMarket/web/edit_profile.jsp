@@ -63,9 +63,9 @@
                                                 </div>-->
                     </div>
 
-                    <form action="index.html" method="post"  name="signUpForm">
-                        <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
+                    <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
 
+                        <form action="index.html" method="post"  name="signUpForm">
                             <div class="mbr-section__container mbr-section__container--middle">
                                 <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
                                     <!--<h3 class="mbr-header__text">${sessionScope.user.name}</h3>-->
@@ -103,9 +103,10 @@
                                     <h2><strong>Interested in: tomatoes</strong></h2>    
                                 </div>
                             </div>
-                        </div>
 
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
