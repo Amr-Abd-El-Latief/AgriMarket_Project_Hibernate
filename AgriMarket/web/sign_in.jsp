@@ -49,9 +49,7 @@
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-8 col-sm-offset-2">
-
-
-                                <form action="index.jsp" method="post">
+                                <form action="signin" method="post">
 
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" required="" placeholder="Email*">

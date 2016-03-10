@@ -16,10 +16,10 @@ public class JdbcConnection {
 	/**
 	 * Default configurations
 	 */
-	public JdbcConnection() {
+	private JdbcConnection() {
 	}
 
-	public JdbcConnection(String url, String user, String pass) {
+	private JdbcConnection(String url, String user, String pass) {
 		this.url = url;
 		this.user = user;
 		this.pass = pass;
