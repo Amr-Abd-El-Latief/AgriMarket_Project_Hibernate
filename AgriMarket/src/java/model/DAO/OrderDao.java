@@ -15,7 +15,8 @@ import model.pojo.User;
  */
 public interface OrderDao {
     public List<Order> getAllOrders();
-    public Order getOrder();
+    //Get by what?
+    public Order getOrder(int id);
     public boolean addOrder(Order order);
     public boolean updateOrder(Order order);
 }

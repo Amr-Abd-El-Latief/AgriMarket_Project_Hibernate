@@ -18,4 +18,6 @@ public interface UserDao {
    public User signIn(String email,String Password);
    public void updateUser(User user);
    public boolean signUp(User user);
+   //We need get user
+   public User getUser(String email);
 }
