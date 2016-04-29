@@ -2,13 +2,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:useBean id="product" class="model.pojo.Product" scope="request">
-    <jsp:setProperty name="product" property="*" />
-</jsp:useBean>
 
-<c:if test="${user.valid()}">
-    <jsp:forward page="SignUpUserController"/>
-</c:if>
+<%--<c:if test="principal.isUserInRole('manager')">
+    <c:redirect url="/admin.jsp" />
+</c:if>--%>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,20 +19,83 @@
         <link rel="shortcut icon" href="../assets/images/untitled-382x276-65.png" type="image/x-icon">
         <meta name="description" content="">
         <title>AgriMarket</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
-        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/animate.css/animate.min.css">
-        <link rel="stylesheet" href="../assets/mobirise/css/style.css">
-        <link rel="stylesheet" href="../assets/mobirise-gallery/style.css">
-        <link rel="stylesheet" href="../assets/mobirise-slider/style.css">
-        <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
-        <link rel="stylesheet" href="../assets/mobirise/css/main.css" type="text/css">
-        <link rel="stylesheet" href="../assets/mobirise/css/popup.css" type="text/css">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../assets/animate.css/animate.min.css" type="text/css"/>
+        <link rel="stylesheet" href="../assets/mobirise/css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="../assets/mobirise-gallery/style.css" />
+        <link rel="stylesheet" href="../assets/mobirise-slider/style.css" />
+        <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="../assets/mobirise/css/popup.css" type="text/css">
+        <link rel="stylesheet" href="../assets/mobirise/css/main.css" type="text/css">
+
+
+        <script src="../assets/web/assets/jquery/jquery.min.js"></script>
+        <style>
+            a{
+                text-decoration: none;
+            }
+        </style>
+        <script type="text/javascript">
+
+
+
+//              $category = $('#pcategory');
+//        var name = $category.attr("selectedIndex");
+            var cl = 0;
+            $(document).ready(function () {
+                $.ajax({
+                    url: "gategories",
+                    type: 'GET',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (data) {
+                        $.each(data, function (i, category) {
+                            $('.pcategory').append('<option   value=' + category.id + '>' + category.name + '</option>');
+//                        location.reload();   
+                        });
+                    }
+                });
+
+                $("#edit-form .modify-product").click(function (event) {
+                    
+                    var pName = event.target.id;
+                    
+                     
+                    $.ajax({
+                        url: "modifyproduct",
+                        type: 'GET',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        data: {productName: pName},
+                        success: function (data) {
+                            console.log(data.name);
+                            $("#product-name-modify").val(data.name);
+                            $("#hidden-input").val(data.name);
+                            $("#price-modify").val(data.price);
+                            $("#quantity-modify").val(data.quantity);
+                            document.getElementById("rdoSelect").selectedIndex = 1;
+                            
+                            $(".category").val(data.category_id);
+                            $("#dec-modify").val(data.desc);
+                        }
+
+
+                    });
+                });
+//            $("a").click(function (event) {
+//
+            });
+
+
+        </script>
 
 
     </head>
     <body>
+        <% if (request.isUserInRole("manager")) { %>
+ 
         <section class="engine"><a rel="external" href="https://mobirise.com">Mobirise free website builder
             </a></section>
         <section class="mbr-navbar mbr-navbar--freeze mbr-navbar--absolute mbr-navbar--transparent mbr-navbar--sticky mbr-navbar--auto-collapse" id="menu-33">
@@ -67,7 +129,7 @@
                                         <h1 class="mbr-hero__text">AGRIMARKET</h1>
                                         <p class="mbr-hero__subtext">Agricultural Market in Egypt</p>
                                     </div>
-                                    <div class="mbr-buttons btn-inverse mbr-buttons--left"><a class="mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-primary" href="#header3-41">PRODUCT MANAGMENT</a> <a class="mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-info" href="https://mobirise.com">USER MANAGMENT</a></div>
+                                    <div class="mbr-buttons btn-inverse mbr-buttons--left"><a class="mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-primary" href="#accordion">PRODUCT MANAGMENT</a> <a class="mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-info" href="https://mobirise.com">USER MANAGMENT</a></div>
                                 </div></div>
                         </div></div>
                 </div>
@@ -105,16 +167,20 @@
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                                     ADD NEW PRODUCT</a>
                             </h4>
-                            <span id="add-form"></span>
+                        <span class="add-form" style="    font-size: 19px;"></span>
                         </div>
-                        <div id="collapse1" class="panel-collapse collapse in">
+                        <div id="collapse1" class="panel-collapse collapse">
                             <div class="panel-body"> 
                                 <div class="container" style="margin-left: -89px;">
-                                    <form class="form-horizontal" role="form" method="post" onsubmit="return validateProductForm()">
+
+                                    <form class="form-horizontal" enctype="MULTIPART/FORM-DATA"  role="form" method="post" action="addproduct" onsubmit="return validateProductForm()">
+
+                                        <span style="color: red;font-size: 19px;margin-left: 202px;">${param["status"]}</span>
+                                        <span style="color: black;margin-left: -8px;font-size: 19px;">${param["success"]}</span>
                                         <div class="form-group">
                                             <label class="control-label col-sm-2" for="name">Product Name</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="product name" required>
+                                                <input type="text" class="form-control" value="${param.name}" name="name" id="name" placeholder="product name" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -126,15 +192,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-2" for="categoryId">Category:</label>
                                             <div class="col-sm-10">          
-                                                <div class="dropdown">
-                                                    <button class="btn btn-primary dropdown-toggle" type="button" name="categoryId" data-toggle="dropdown">Dropdown Example
-                                                        <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">product1</a></li>
-                                                        <li><a href="#">product1</a></li>
-                                                        <li><a href="#">product1</a></li>
-                                                    </ul>
-                                                </div>   
+                                                <label class="category-label">
+                                                    <select   class="pcategory" name="pcategory" required>
+                                                        <option selected>Select you category</option>
+
+                                                    </select>
+                                                </label>
+                                                <!--</div>-->
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -143,113 +207,109 @@
                                                 <input type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity" required>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-2" for="image" >Image</label>
                                             <div class="col-sm-10">          
                                                 <span class="btn btn-default btn-file">
-                                                    Browse <input type="file" required name="image" >
+                                                    Browse <input type="file"   name="image" >
                                                 </span>                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-2" for="desc">Description</label>
                                             <div class="col-sm-10">          
-                                                <textarea class="form-control" rows="5" id="desc" name="desc" required></textarea>
+                                                <textarea class="form-control" rows="5" cols="109" id="desc" name="desc" required></textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">        
                                             <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-default" id="add">ADD</button>
+                                                <button   class="btn btn-default" id="add">ADD</button>
                                             </div>
+
                                         </div>
                                     </form>
                                 </div></div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default " id="product-div">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                                     View Products</a>
                             </h4>
                         </div>
-                        <div id="collapse2" class="panel-collapse collapse">
+                        <div id="collapse2" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class=" col-sm-12 col-sm-offset-2" style="    margin-left: 3px;">
                                     <!--<div class="row mbr-gallery-row">-->
-                                    <%--<c:forEach items="${users}" var="user" >--%>
+                                    <c:if test="${requestScope.products == null}">
+                                        <c:redirect url="getProducts" />
+                                    </c:if>
+                                    <c:forEach items="${products}" var="product" >
 
-                                    <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-                                        <span>product name</span>
-                                        <a href="#lb-gallery2-38" data-slide-to="0" data-toggle="modal">
-                                            <img alt="" src="../assets/images/images-4-275x183-96-275x183-5.jpg">
-                                            <span class="icon glyphicon glyphicon-zoom-in">product name</span>
-                                        </a>
-                                        <div class="container" style="margin-left: -13px;margin-top: 3px;">
-                                            <a  id="modify-product"><span class="glyphicon glyphicon-edit" >Modify</span></a>
-                                            <a  href="#"><span class="glyphicon glyphicon-remove" style="margin-left: 24px;">Delete</span></a>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
+                                            <span class="productName">${product.name}</span>
+                                            <a id='+${product.name}+' href="#lb-gallery2-38" data-slide-to="0" data-toggle="modal">
+                                                <img width="550" height="240"
+                                                     style="border: 1.1px solid #2969b0;
+                                                     border-bottom: none;"  src="${pageContext.request.contextPath}/images/${product.name}">
+                                                <span class="icon glyphicon glyphicon-zoom-in">${product.name}</span>
+                                            </a>
+                                            <div class="container" style="margin-left: -13px;margin-top: 3px;">
+                                                <form action="addproduct" method="get" id="edit-form">
+                                                    <a   class="modify-product"   style="cursor: pointer"><span id='${product.name}' class="glyphicon glyphicon-edit" >Modify</span></a>
+                                                    <a  href="javascript:;" onclick="parentNode.submit()
+                                                                ;" class="delete-product" href="#" ><span class="glyphicon glyphicon-remove"  style="margin-left: 24px;">Delete</span></a>
+                                                    <input type="hidden"   value="${product.name}" name="product_Name">
+                                                </form>
+                                            </div>
                                         </div>
+
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                </div>
+
+<!--                 Lightbox 
+                <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-38">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <ol class="carousel-indicators">
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-38" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#lb-gallery2-38" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#lb-gallery2-38" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img alt="" src="../assets/images/images-4-275x183-96.jpg">
+                                    </div><div class="item">
+                                        <img alt="" src="../assets/images/images-2-275x183-16.jpg">
+                                    </div><div class="item">
+                                        <img alt="" src="../assets/images/download-2-275x183-80.jpg">
                                     </div>
-
-                                    <%--</c:forEach>--%>
-
-                                    <!--                           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-                                                                       <a href="#lb-gallery2-38" data-slide-to="1" data-toggle="modal">
-                                                                           <img alt="" src="../assets/images/images-2-275x183-16-275x183-48.jpg">
-                                                                           <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                                                       </a>
-                                                                   </div>
-                                                               <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-                                                                       <a href="#lb-gallery2-38" data-slide-to="2" data-toggle="modal">
-                                                                           <img alt="" src="../assets/images/download-2-275x183-80-275x183-28.jpg">
-                                                                           <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                                                       </a>
-                                                                   </div>
-                                                               </div>-->
                                 </div>
+                                <a class="left carousel-control" role="button" data-slide="prev" href="#lb-gallery2-38">
+                                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" role="button" data-slide="next" href="#lb-gallery2-38">
+                                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+
+                                <a class="close" href="#" role="button" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    <span class="sr-only">Close</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="clearfix"></div>
-            </div>
-
-            <!-- Lightbox -->
-            <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-38">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <ol class="carousel-indicators">
-                                <li data-app-prevent-settings="" data-target="#lb-gallery2-38" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#lb-gallery2-38" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#lb-gallery2-38" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img alt="" src="../assets/images/images-4-275x183-96.jpg">
-                                </div><div class="item">
-                                    <img alt="" src="../assets/images/images-2-275x183-16.jpg">
-                                </div><div class="item">
-                                    <img alt="" src="../assets/images/download-2-275x183-80.jpg">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" role="button" data-slide="prev" href="#lb-gallery2-38">
-                                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" role="button" data-slide="next" href="#lb-gallery2-38">
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-
-                            <a class="close" href="#" role="button" data-dismiss="modal">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                <span class="sr-only">Close</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </div>-->
         </section>
 
         <footer class="mbr-section mbr-section--relative mbr-section--fixed-size" id="footer1-35" style="background-color: rgb(68, 68, 68);">
@@ -274,59 +334,59 @@
                             <span class="sr--only close-modal common-sprite">Close</span>
                         </button>
                         <p>Edit Product </p>
+                        <span class="add-form" style="    font-size: 19px;"></span>
                     </div>
                     <div class="modal-body">
                         <div >
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" action="modifyproduct" method="post" onsubmit="return validateModifyProductForm()">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="product-name-modify">Product Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="product-name-modify" placeholder="product name">
+                                        <input type="text" class="form-control" disabled id="product-name-modify"   required placeholder="product name">
+                                        <input type="hidden"   name="name" id="hidden-input">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="price-modify">Price</label>
                                     <div class="col-sm-10">          
-                                        <input type="text" class="form-control" id="price-modify" placeholder="price $">
+                                        <input type="text" class="form-control" name="price" id="price-modify" value="${param.price}" required placeholder="price $">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Category:</label>
+                                    <label class="control-label col-sm-2" for="categoryId">Category:</label>
                                     <div class="col-sm-10">          
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                                                <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">product1</a></li>
-                                                <li><a href="#">product1</a></li>
-                                                <li><a href="#">product1</a></li>
-                                            </ul>
-                                        </div>   
+                                        <label class="category-label">
+                                            <select   class="pcategory" disabled id="rdoSelect" name="pcategory" required>
+                                                <option selected>Select you category</option>
+
+                                            </select>
+                                        </label>
+                                        <!--</div>-->
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="pwd">Quantity</label>
                                     <div class="col-sm-10">          
-                                        <input type="text" class="form-control" id="quantity-modify" placeholder="quantity 1,2,3...">
+                                        <input type="text" class="form-control" name="quantity" value="${param.quantity}" id="quantity-modify" required placeholder="quantity 1,2,3...">
                                     </div>
                                 </div>
-                                <div class="form-group">
+<!--                                <div class="form-group">
                                     <label class="control-label col-sm-2" for="pwd">Image</label>
                                     <div class="col-sm-10">          
                                         <span class="btn btn-default btn-file">
                                             Browse <input type="file">
                                         </span>                                            </div>
-                                </div>
+                                </div>-->
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="dec-modify">Description</label>
                                     <div class="col-sm-10">          
-                                        <textarea class="form-control" rows="5" id="dec-modify" ></textarea>
+                                        <textarea class="form-control" required rows="5" name="desc" value="${param.desc}" cols="50" id="dec-modify" ></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group">        
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">ADD</button>
+                                        <button type="submit" class="btn btn-default">Modify</button>
                                     </div>
                                 </div>
                             </form>
@@ -335,8 +395,9 @@
                 </div>
             </div>
         </div>
+                                    <% } %>
         <!-- end modify product-->
-        <script src="../assets/web/assets/jquery/jquery.min.js"></script>
+       
         <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="../assets/smooth-scroll/SmoothScroll.js"></script>
         <script src="../assets/jarallax/jarallax.js"></script>

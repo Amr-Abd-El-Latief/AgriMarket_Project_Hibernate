@@ -6,14 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v2.9, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="assets/images/untitled-382x276-65.png" type="image/x-icon">
-        <meta name="description" content="">
+         <meta name="description" content="">
         <title>Sign In</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/mobirise/css/style.css">
-        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
+     
 
 
     </head>
@@ -69,15 +64,15 @@
             </div>
         </section>
 
-
+<!--
         <script src="assets/web/assets/jquery/jquery.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/smooth-scroll/SmoothScroll.js"></script>
-        <!--[if lte IE 9]>
+        [if lte IE 9]>
           <script src="assets/jquery-placeholder/jquery.placeholder.min.js"></script>
-        <![endif]-->
+        <![endif]
         <script src="assets/jarallax/jarallax.js"></script>
-        <script src="assets/mobirise/js/script.js"></script>
+        <script src="assets/mobirise/js/script.js"></script>-->
 
 
     </body>

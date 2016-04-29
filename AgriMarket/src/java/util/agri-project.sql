@@ -65,7 +65,7 @@ CONSTRAINT   `user_interest_UQ` UNIQUE (email,name),
 
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` INT(3) NOT NULL,
+  `id` INT(3) NOT NULL Auto_increment ,
   `name` VARCHAR(100) NOT NULL,
    PRIMARY KEY  (id)
 );

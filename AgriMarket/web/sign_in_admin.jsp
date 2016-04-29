@@ -1,3 +1,8 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,18 +11,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v2.9, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="assets/images/untitled-382x276-65.png" type="image/x-icon">
-        <meta name="description" content="">
+         <meta name="description" content="">
         <title>Sign In</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/mobirise/css/style.css">
-        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
-
+         
 
     </head>
-    <body  style="background-image: url(assets/images/istock-000016896298xlarge-4200x2833-56.jpg);">
+    <body  >
         <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(34, 34, 34);"></div>
 
         <section class="engine"><a rel="external" href="https://mobirise.com">Mobirise bootstrap layout builder
@@ -28,7 +27,7 @@
                     <div class="mbr-navbar__container">
                         <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
                             <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
-                                <span class="mbr-brand__logo"><a href="index.jsp"><img class="mbr-navbar__brand-img mbr-brand__img" src="assets/images/untitled-382x276-98.png" alt="AgriMarket" title="AgriMarket"></a></span>
+                                <span class="mbr-brand__logo"><a href="index.jsp"><img class="mbr-navbar__brand-img mbr-brand__img" src="/assets/images/untitled-382x276-98.png" alt="AgriMarket" title="AgriMarket"></a></span>
                                 <span class="mbr-brand__name"><a class="mbr-brand__name text-white" href="index.jsp">AGRIMARKET</a></span>
                             </span>
                         </div>
@@ -49,18 +48,17 @@
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-8 col-sm-offset-2">
-                                <form action="signin" method="post">
+                                <form  method="post" action="j_security_check">
 
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" required="" placeholder="Email*">
+                                        <input type="text" class="form-control" name="j_username" required="" placeholder="user name">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="password" placeholder="Password*">
+                                        <input type="password" class="form-control" name="j_password" required="" placeholder="Password*">
                                     </div>
 
                                     <div class="mbr-buttons mbr-buttons--right">
-                                        <button type="button" onclick="window.location.href = 'sign_up.jsp';" class="mbr-buttons__btn btn btn-lg btn-danger">SIGN UP</button>
-                                        <button type="submit"  class="mbr-buttons__btn btn btn-lg btn-danger">SIGN IN</button></div>
+                                        <input type="submit"  class="mbr-buttons__btn btn btn-lg btn-danger"  value="SIGN IN"/></div>
                                 </form>
                             </div>
                         </div>
@@ -70,15 +68,7 @@
         </section>
 
 
-        <script src="assets/web/assets/jquery/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/smooth-scroll/SmoothScroll.js"></script>
-        <!--[if lte IE 9]>
-          <script src="assets/jquery-placeholder/jquery.placeholder.min.js"></script>
-        <![endif]-->
-        <script src="assets/jarallax/jarallax.js"></script>
-        <script src="assets/mobirise/js/script.js"></script>
-
+     
 
     </body>
 </html>

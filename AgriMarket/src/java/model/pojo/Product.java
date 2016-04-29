@@ -18,6 +18,7 @@ public class Product {
     private int quantity;
 
     public Product() {
+        name="";
     }
 
     public String getName() {
@@ -68,7 +69,7 @@ public class Product {
         this.quantity = quantity;
     }
     
-         public boolean valid()
+    public boolean valid()
     {
         return name.length()!=0 ;
     }
