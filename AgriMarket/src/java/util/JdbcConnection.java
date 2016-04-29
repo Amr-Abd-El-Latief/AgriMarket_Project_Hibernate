@@ -16,10 +16,10 @@ public class JdbcConnection {
 	/**
 	 * Default configurations
 	 */
-	public JdbcConnection() {
+	private JdbcConnection() {
 	}
 
-	public JdbcConnection(String url, String user, String pass) {
+	private JdbcConnection(String url, String user, String pass) {
 		this.url = url;
 		this.user = user;
 		this.pass = pass;
@@ -31,7 +31,7 @@ public class JdbcConnection {
             try {
                 
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                if (connection == null) {
+                if (connection != null) {
                    connection = DriverManager.getConnection(url, user, pass);	   
                 }
                  

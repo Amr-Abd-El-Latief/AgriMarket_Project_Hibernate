@@ -19,7 +19,7 @@ public class User {
     private String job;
     private String address;
     private byte[] image;
-    private LocalDate BOD;
+    private LocalDate DOB;
     private String creditNumber;
     private ArrayList<String> interests = new ArrayList<>();
     private ArrayList<Order> orders = new ArrayList<>();
@@ -75,12 +75,12 @@ public class User {
         this.image = image;
     }
 
-    public LocalDate getBOD() {
-        return BOD;
+    public LocalDate getDOB() {
+        return DOB;
     }
 
-    public void setBOD(LocalDate BOD) {
-        this.BOD = BOD;
+    public void setDOB(LocalDate DOB) {
+        this.DOB = DOB;
     }
 
     public String getCreditNumber() {
@@ -106,8 +106,6 @@ public class User {
     public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
     }
-    
-    
     
     
 }
